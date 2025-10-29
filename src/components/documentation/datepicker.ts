@@ -5,7 +5,8 @@ export const datepickerDocumentation = {
   description: 'Select dates and date ranges with an interactive calendar interface.',
   
   examples: {
-    react: `import { DatePicker, DateRangePicker } from './ui/date-picker';
+    react: `import React from 'react';
+import { DatePicker, DateRangePicker, DateTimePicker, TimeOnlyPicker } from './ui/date-picker';
 
 function DatePickerExample() {
   const [date, setDate] = React.useState<Date | undefined>();
@@ -13,6 +14,8 @@ function DatePickerExample() {
     from: Date | undefined;
     to: Date | undefined;
   }>({ from: undefined, to: undefined });
+  const [dateTime, setDateTime] = React.useState<Date | undefined>();
+  const [time, setTime] = React.useState<{ hours: number; minutes: number; ampm?: "AM" | "PM" } | undefined>();
 
   return (
     <div className="space-y-4">
@@ -26,6 +29,18 @@ function DatePickerExample() {
         value={range}
         onChange={setRange}
         placeholder="Pick a date range"
+      />
+
+      <DateTimePicker
+        value={dateTime}
+        onChange={setDateTime}
+        placeholder="Pick a date and time"
+      />
+
+      <TimeOnlyPicker
+        value={time}
+        onChange={setTime}
+        placeholder="Pick a time"
       />
     </div>
   );
@@ -95,13 +110,13 @@ export class DatePickerComponent {
     properties: [
       {
         property: 'value',
-        type: 'Date | { from: Date, to: Date }',
-        description: 'The selected date or date range'
+        type: 'Date | { from: Date, to: Date } | { hours: number; minutes: number; ampm?: "AM" | "PM" }',
+        description: 'The selected date, date range, or time value'
       },
       {
         property: 'onChange',
         type: '(date | range) => void',
-        description: 'Callback function called when date selection changes'
+        description: 'Callback function called when selection changes'
       },
       {
         property: 'placeholder',
@@ -112,6 +127,11 @@ export class DatePickerComponent {
         property: 'disabled',
         type: 'boolean',
         description: 'Disable date picker interaction'
+      },
+      {
+        property: 'error',
+        type: 'boolean',
+        description: 'Sets the error state on the input (inherited from base Input)'
       }
     ],
     attributes: [
@@ -129,7 +149,34 @@ export class DatePickerComponent {
       'Provide clear labels for selected dates and date ranges',
       'Maintain focus management when opening and closing the calendar',
       'Include accessible feedback for date selection and validation'
-    ]
+    ],
+    usage: {
+      'Implementation Guide': `
+1) Use base Input for all pickers
+   - DatePicker, DateRangePicker, DateTimePicker, and TimeOnlyPicker must render a read-only base Input.
+   - Visual styling, sizes, focus ring, disabled, and error states are inherited from the base Input component.
+
+2) States & Focus
+   - Error: pass error={true} to show destructive border and ring.
+   - Disabled: pass disabled to disable interactions and lower contrast.
+   - Focus: opening the popover should maintain the Input focus state (handled by data-popover-open CSS in globals.css).
+
+3) Formatting
+   - Date: MM/DD/YYYY (e.g., 04/15/2024)
+   - Time: HH : MM AM/PM (spaces around the colon, uppercase AM/PM)
+   - DateTime: "MM/DD/YYYY  HH : MM AM" as a single input value.
+
+4) Behavior
+   - Clicking the Input toggles the popover.
+   - Selecting a date/time updates the value and closes the popover for DatePicker; DateTime keeps open until both are chosen or user closes.
+   - Calendar header uses month and year dropdowns with previous/next controls.
+
+5) Accessibility
+   - Provide aria-labels on trigger/input when needed.
+   - Ensure keyboard navigation for day grid and time wheel.
+   - Popover content should be reachable and dismissible via keyboard.
+      `
+    }
   }
 };
 

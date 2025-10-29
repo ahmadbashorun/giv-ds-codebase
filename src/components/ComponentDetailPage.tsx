@@ -237,6 +237,28 @@ export function ComponentDetailPage({ componentId, onSectionChange }: ComponentD
           </div>
         )}
 
+        {/* Implementation Guide (if provided in guidelines.usage) */}
+        {component.guidelines?.usage && (
+          <div className="p-6 border-b" style={{ borderColor: 'var(--border-divider)' }}>
+            <div className="space-y-4">
+              <h3 className="h6-heading" style={{ color: 'var(--text-heading-section)' }}>Implementation Guide</h3>
+              {Object.entries(component.guidelines.usage).map(([title, content]) => (
+                <div key={title} className="space-y-2">
+                  <h4 className="h7-heading" style={{ color: 'var(--text-heading-section)' }}>{title}</h4>
+                  <pre
+                    className="p-4 rounded-md overflow-x-auto text-sm leading-relaxed"
+                    style={{ backgroundColor: 'var(--background-page)', color: 'var(--text-body)', border: '1px solid var(--border-card)' }}
+                  >
+                    <code style={{ fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas", monospace' }}>
+                      {content}
+                    </code>
+                  </pre>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Code Examples */}
         <div className="p-6">
           <div className="space-y-6">

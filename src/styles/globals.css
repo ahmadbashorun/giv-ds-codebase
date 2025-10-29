@@ -681,16 +681,15 @@ html {
 /* Maintain focused state while dropdown/popover is open 
    Applied to DatePicker and Select components to keep visual focus state */
 [data-popover-open="true"] input:not([aria-invalid="true"]),
-[data-popover-open="true"] > div:not([aria-invalid="true"]),
 button[data-state="open"]:not([aria-invalid="true"]) {
   border-color: var(--input-border-active) !important;
   outline: 2px solid var(--input-outline-active) !important;
   outline-offset: 1px !important;
   box-shadow: 0 0 0 1px var(--input-border-active) !important;
 }
+
 /* Ensure error state takes precedence over open state */
 [data-popover-open="true"] input[aria-invalid="true"],
-[data-popover-open="true"] > div[aria-invalid="true"],
 button[data-state="open"][aria-invalid="true"] {
   border-color: var(--destructive-foreground) !important;
   outline: 2px solid var(--destructive-foreground) !important;
