@@ -60,12 +60,12 @@ const navigationItems = [
     icon: Layout,
     description: 'Common design patterns and layouts'
   },
-  { 
-    id: 'resources', 
-    label: 'Resources', 
-    icon: Book,
-    description: 'Guidelines, assets, and downloads'
-  }
+  // { 
+  //   id: 'resources', 
+  //   label: 'Resources', 
+  //   icon: Book,
+  //   description: 'Guidelines, assets, and downloads'
+  // }
 ];
 
 // Foundation sub-sections for sidebar
@@ -199,18 +199,20 @@ export function DesignSystemLayout({
       {/* Content Container with proper top margin */}
       <div className="flex pt-[89px]">
         {/* Sidebar - Fixed and Sticky */}
-        <aside 
-          className={`
-            fixed lg:static inset-y-0 left-0 z-40 w-64 border-r transform transition-transform duration-300 ease-in-out
-            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-            lg:sticky lg:top-[89px] lg:h-[calc(100vh-89px)]
-          `}
-          style={{ 
-            backgroundColor: 'var(--sidebar)',
-            borderColor: 'var(--sidebar-border)',
-            top: '89px'
-          }}
-        >
+        {currentSection !== 'overview' && (
+          <aside 
+            className={`
+              fixed lg:static left-0 z-40 w-64 border-r transform transition-transform duration-300 ease-in-out
+              ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+              lg:sticky lg:h-[calc(100vh-89px)]
+            `}
+            style={{ 
+              backgroundColor: 'var(--sidebar)',
+              borderColor: 'var(--sidebar-border)',
+              top: '89px',
+              bottom: 0
+            }}
+          >
           <div className="p-6 h-full overflow-y-auto">
             {currentSection === 'foundations' && (
               <nav className="space-y-1">
@@ -281,6 +283,7 @@ export function DesignSystemLayout({
             )}
           </div>
         </aside>
+        )}
 
         {/* Main Content */}
         <main className="flex-1 min-w-0">
