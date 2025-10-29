@@ -1,0 +1,700 @@
+/* =====================================================
+   GIV DESIGN SYSTEM - GLOBAL CSS
+   ===================================================== */
+
+/* =====================================================
+   PRIMITIVE TOKENS (Base Design Tokens)
+   ===================================================== */
+:root {
+  /* Base font configuration */
+  --font-family: "Inter", Helvetica, Arial, sans-serif;
+  --font-size-base: 14px;
+
+  /* Font weights (Helvetica Neue LT Pro) */
+  --font-weight-bold: 700; /* 75 Bold */
+  --font-weight-medium: 500; /* 65 Medium */
+  --font-weight-roman: 400; /* 55 Roman */
+  --font-weight-light: 300; /* 45 Light */
+
+  /* Typography scale */
+  --text-h1: 40px;
+  --text-h2: 36px;
+  --text-h3: 32px;
+  --text-h4: 28px;
+  --text-h5: 24px;
+  --text-h6: 20px;
+  --text-p: 16px;
+  --text-label: 14px;
+  --text-caption: 12px;
+  --text-micro: 10px;
+
+  /* Primary color primitives */
+  --primary-mobile-bg: rgba(
+    37,
+    91,
+    184,
+    1
+  ); /* #255BB8 - Mobile bg */
+  --primary-p00: rgba(232, 236, 250, 1); /* #E8ECFA */
+  --primary-p01: rgba(214, 223, 255, 1); /* #D6E3FF */
+  --primary-p02: rgba(144, 185, 255, 1); /* #90B9FF */
+  --primary-p03: rgba(75, 135, 237, 1); /* #4B87ED */
+  --primary-p04: rgba(50, 109, 208, 1); /* #326DD0 (base) */
+  --primary-p05: rgba(37, 91, 184, 1); /* #255BB8 */
+
+  /* Grey color primitives */
+  --grey-white: rgba(255, 255, 255, 1); /* #FFFFFF */
+  --grey-g00: rgba(248, 249, 251, 1); /* #F8F9FB */
+  --grey-g01: rgba(248, 249, 251, 1); /* #F8F9FB */
+  --grey-g02: rgba(239, 240, 244, 1); /* #EFF0F4 */
+  --grey-g03: rgba(229, 230, 233, 1); /* #E5E6E9 */
+  --grey-g04: rgba(210, 213, 217, 1); /* #D2D5D9 */
+  --grey-g05: rgba(162, 165, 169, 1); /* #A2A5A9 */
+  --grey-g06: rgba(115, 118, 122, 1); /* #73767A */
+  --grey-g07: rgba(84, 86, 90, 1); /* #54565A */
+  --grey-g08: rgba(61, 63, 66, 1); /* #3D3F42 */
+  --grey-g09: rgba(47, 50, 55, 1); /* #2F3237 */
+  --grey-g10: rgba(29, 30, 32, 1); /* #1D1E20 */
+  --grey-g11: rgba(19, 20, 21, 1); /* #131415 */
+  --grey-brand-black: rgba(10, 10, 10, 1); /* #0A0A0A */
+  --grey-alpha: rgba(61, 63, 66, 0.4); /* #3D3F42 (40%) */
+
+  /* Success color primitives */
+  --success-s00: rgba(239, 254, 232, 1); /* #EFFEE8 */
+  --success-s01: rgba(218, 255, 208, 1); /* #DAFFD0 */
+  --success-s02: rgba(139, 217, 184, 1); /* #8BD9B8 */
+  --success-s03: rgba(64, 161, 77, 1); /* #40A14D (base) */
+  --success-s04: rgba(36, 112, 48, 1); /* #246130 */
+  --success-s05: rgba(26, 65, 31, 1); /* #1A411F */
+
+  /* Warning color primitives */
+  --warning-sw00: rgba(255, 248, 214, 1); /* #FFF8D6 */
+  --warning-sw01: rgba(251, 236, 204, 1); /* #FBECCC */
+  --warning-sw02: rgba(244, 198, 102, 1); /* #F4C666 */
+  --warning-sw03: rgba(236, 160, 0, 1); /* #ECA000 (base) */
+  --warning-sw04: rgba(142, 96, 0, 1); /* #8E6000 */
+  --warning-sw05: rgba(94, 64, 0, 1); /* #5E4000 */
+
+  /* Error color primitives */
+  --error-se00: rgba(251, 235, 232, 1); /* #FBEBE8 */
+  --error-se01: rgba(255, 227, 225, 1); /* #FFE3E1 */
+  --error-se02: rgba(228, 125, 101, 1); /* #E47D65 */
+  --error-se03: rgba(201, 47, 40, 1); /* #C92F28 (base) */
+  --error-se04: rgba(179, 48, 17, 1); /* #B33011 */
+  --error-se05: rgba(98, 32, 27, 1); /* #62201B */
+
+  /* Elevation shadows */
+  --elevation-sm: 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+
+  /* Border radius scale */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+}
+
+/* =====================================================
+   SEMANTIC TOKENS (Role-based Design Tokens)
+   ===================================================== */
+:root {
+  /* Background colors */
+  --background: var(
+    --grey-white
+  ); /* Main application background */
+  --background-page: var(--grey-g00); /* Page background */
+  --background-card: var(--grey-white); /* Card background */
+  --background-card-hover: var(
+    --grey-g01
+  ); /* Card hover state */
+  --background-card-alt: var(
+    --grey-g02
+  ); /* Alternative card background */
+
+  /* Text colors */
+  --foreground: var(--grey-g08); /* Primary text */
+  --text-heading-page: var(--grey-g09); /* Page headings */
+  --text-heading-section: var(
+    --grey-g08
+  ); /* Section headings */
+  --text-body: var(--grey-g07); /* Body text */
+  --text-body-dynamic: var(--grey-g10); /* Dynamic body text */
+  --text-metadata: var(--grey-g06); /* Secondary info */
+
+  /* Interactive elements */
+  --primary: var(--primary-p04); /* Primary buttons/links */
+  --primary-foreground: var(--grey-g00); /* Text on primary */
+  --primary-hover: var(--primary-p05); /* Primary hover state */
+
+  --secondary: var(--grey-white); /* Secondary buttons */
+  --secondary-foreground: var(
+    --primary-p04
+  ); /* Text on secondary */
+  --secondary-hover: var(--grey-g01); /* Secondary hover */
+
+  /* Muted elements */
+  --muted: var(--grey-g04); /* Disabled/muted backgrounds */
+  --muted-foreground: var(--grey-g06); /* Disabled/muted text */
+
+  /* Accent elements */
+  --accent: var(--primary-p00); /* Accent backgrounds */
+  --accent-foreground: var(--primary-p04); /* Text on accent */
+
+  /* Destructive actions */
+  --destructive: var(--error-se01); /* Destructive button bg */
+  --destructive-foreground: var(
+    --error-se03
+  ); /* Destructive text */
+
+  /* Form elements */
+  --input: var(--grey-white); /* Input background */
+  --input-background: var(
+    --grey-white
+  ); /* Input container bg */
+  --input-border: var(--grey-g03); /* Input border */
+  --input-placeholder: var(--grey-g05); /* Placeholder text */
+  --input-border-active: var(--primary-p02);
+  --input-outline-active: var(--primary-p01);
+
+  /* Borders and dividers */
+  --border: var(--grey-g04); /* Default border */
+  --border-card: var(--grey-g03); /* Card borders */
+  --border-divider: var(--grey-g03); /* Section dividers */
+
+  /* Focus states */
+  --ring: var(--primary-p03); /* Focus ring color */
+
+  /* Status colors */
+  --status-success-bg: var(
+    --success-s01
+  ); /* Success background */
+  --status-success-text: var(--success-s03); /* Success text */
+  --status-warning-bg: var(
+    --warning-sw01
+  ); /* Warning background */
+  --status-warning-text: var(--warning-sw03); /* Warning text */
+  --status-error-bg: var(--error-se01); /* Error background */
+  --status-error-text: var(--error-se03); /* Error text */
+
+  /* Chart colors */
+  --chart-1: #54a0ff; /* Chart.js Blue */
+  --chart-2: #ff6b6b; /* Chart.js Pink/Red */
+  --chart-3: #4ecdc4; /* Chart.js Teal */
+  --chart-4: #ffd93d; /* Chart.js Yellow */
+  --chart-5: #6c5ce7; /* Chart.js Purple */
+  --chart-6: #ffa502; /* Chart.js Orange */
+  --chart-7: #a4b0be; /* Chart.js Gray */
+
+  /* Icons & Avatars */
+  --icon-contextual: var(--grey-g06); /* Contextual icons */
+  --icon-action: var(--grey-g06); /* Action icons */
+  --icon-action-disabled: var(--grey-g04); /* Disabled icons */
+  --icon-action-active: var(--primary-p03); /* Active icons */
+
+  /* Avatar backgrounds */
+  --avatar-bg-client: var(--primary-p02); /* Client avatars */
+  --avatar-bg-staff: var(--grey-g06); /* Staff avatars */
+  --avatar-text-client: var(
+    --grey-brand-black
+  ); /* Text on client avatars */
+  --avatar-text-staff: var(
+    --grey-white
+  ); /* Text on staff avatars */
+
+  /* Overlays */
+  --overlay-modal: var(--grey-alpha); /* Modal backdrop */
+
+  /* Component-specific tokens */
+  --card: var(--background-card);
+  --card-foreground: var(--text-body);
+  --popover: var(--background-card);
+  --popover-foreground: var(--text-body);
+
+  /* Default radius */
+  --radius: var(--radius-lg);
+}
+
+/* =====================================================
+   SIDEBAR TOKENS
+   ===================================================== */
+:root {
+  --sidebar: var(--grey-white); /* Sidebar background */
+  --sidebar-foreground: var(--grey-g08); /* Sidebar text */
+  --sidebar-primary: var(--grey-g00); /* Active item bg */
+  --sidebar-primary-foreground: var(
+    --primary-p04
+  ); /* Active item text */
+  --sidebar-accent: var(--grey-white); /* Hover state bg */
+  --sidebar-accent-foreground: var(
+    --grey-g06
+  ); /* Hover state text */
+  --sidebar-border: var(--grey-g03); /* Sidebar borders */
+  --sidebar-ring: var(--primary-p04); /* Focus ring */
+}
+
+/* =====================================================
+   HEADER TOKENS
+   ===================================================== */
+:root {
+  --header-background: var(--grey-g10); /* Header background */
+  --header-foreground: var(--grey-g00); /* Header text */
+}
+
+/* =====================================================
+   TAILWIND THEME INTEGRATION
+   ===================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(
+    --sidebar-primary-foreground
+  );
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(
+    --sidebar-accent-foreground
+  );
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-header-background: var(--header-background);
+  --color-header-foreground: var(--header-foreground);
+  --elevation-sm: var(--elevation-sm);
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* =====================================================
+   TYPOGRAPHY STYLES (Based on Giv Design System)
+   ===================================================== */
+
+/* Display Typography */
+.display-large-bold {
+  font-family: var(--font-family);
+  font-size: 56px;
+  font-weight: 700; /* Bold - 75 */
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-page);
+}
+
+.display-large-semibold {
+  font-family: var(--font-family);
+  font-size: 56px;
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-page);
+}
+
+.display-small-bold {
+  font-family: var(--font-family);
+  font-size: 48px;
+  font-weight: 700; /* Bold - 75 */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-page);
+}
+
+.display-small-semibold {
+  font-family: var(--font-family);
+  font-size: 48px;
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-page);
+}
+
+/* Heading Typography */
+h1,
+.h1-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h1); /* 40px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-page);
+}
+
+h2,
+.h2-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h2); /* 36px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+h3,
+.h3-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h3); /* 32px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+h4,
+.h4-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h4); /* 28px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+h5,
+.h5-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h5); /* 24px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+h6,
+.h6-heading {
+  font-family: var(--font-family);
+  font-size: var(--text-h6); /* 20px */
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+/* Additional heading styles */
+.h7-heading {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+.h8-heading {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium); /* 65 Medium */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-heading-section);
+}
+
+/* Paragraph Typography */
+p,
+.paragraph-large-regular {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-large-medium {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: var(--font-weight-roman); /* 55 Roman */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-medium-regular {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-medium-medium {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-roman); /* 55 Roman */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-small-regular {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-small-medium {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--font-weight-roman); /* 55 Roman */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-xsmall-regular {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+.paragraph-xsmall-medium {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-roman); /* 55 Roman */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-body);
+}
+
+/* Caption Typography */
+.caption-large {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-metadata);
+}
+
+.caption-medium {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-metadata);
+}
+
+.caption-small {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: var(--font-weight-light); /* 45 Light */
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--text-metadata);
+}
+
+/* Form and Interactive Elements */
+label {
+  font-family: var(--font-family);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-roman);
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+button {
+  font-family: var(--font-family);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-roman);
+  line-height: 1.5;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--text-p);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+  background-color: var(--input-background);
+  border-color: var(--input-border);
+  color: var(--text-body);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder);
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+/* =====================================================
+   UTILITY CLASSES
+   ===================================================== */
+/* Text styles based on design system */
+.text-heading-page {
+  color: var(--text-heading-page);
+}
+.text-heading-section {
+  color: var(--text-heading-section);
+}
+.text-body {
+  color: var(--text-body);
+}
+.text-body-dynamic {
+  color: var(--text-body-dynamic);
+}
+.text-metadata {
+  color: var(--text-metadata);
+}
+
+/* Status text colors */
+.text-success {
+  color: var(--status-success-text);
+}
+.text-warning {
+  color: var(--status-warning-text);
+}
+.text-error {
+  color: var(--status-error-text);
+}
+
+/* Status backgrounds */
+.bg-success {
+  background-color: var(--status-success-bg);
+}
+.bg-warning {
+  background-color: var(--status-warning-bg);
+}
+.bg-error {
+  background-color: var(--status-error-bg);
+}
+
+/* Utility classes */
+.bg-background-page {
+  background-color: var(--background-page);
+}
+
+.border-card {
+  border-color: var(--border-card);
+}
+
+/* Table striping and hover via CSS class (works without Tailwind variants) */
+.table-striped tbody tr:nth-child(even) {
+  background-color: var(--grey-g01) !important;
+}
+.table-striped tbody tr:hover {
+  background-color: var(--grey-g02) !important;
+}
+/* Hover-only tables (overview) */
+.table-hover tbody tr:hover {
+  background-color: var(--grey-g01) !important;
+}
+
+/* Badge and Chip color utilities */
+.bg-grey-g02 {
+  background-color: var(--grey-g02) !important;
+}
+.text-grey-g06 {
+  color: var(--grey-g06) !important;
+}
+.bg-grey-g03 {
+  background-color: var(--grey-g03) !important;
+}
+.bg-primary-p00 {
+  background-color: var(--primary-p00) !important;
+}
+.text-primary-p04 {
+  color: var(--primary-p04) !important;
+}
+.bg-primary-p01 {
+  background-color: var(--primary-p01) !important;
+}
+.bg-error-se01 {
+  background-color: var(--error-se01) !important;
+}
+.text-error-se03 {
+  color: var(--error-se03) !important;
+}
+.bg-error-se02 {
+  background-color: var(--error-se02) !important;
+}
+.bg-success-s01 {
+  background-color: var(--success-s01) !important;
+}
+.text-success-s03 {
+  color: var(--success-s03) !important;
+}
+.bg-success-s02 {
+  background-color: var(--success-s02) !important;
+}
+.bg-warning-sw00 {
+  background-color: var(--warning-sw00) !important;
+}
+.text-warning-sw04 {
+  color: var(--warning-sw04) !important;
+}
+.bg-warning-sw01 {
+  background-color: var(--warning-sw01) !important;
+}
+
+/* Maintain focused state while dropdown/popover is open 
+   Applied to DatePicker and Select components to keep visual focus state */
+[data-popover-open="true"] input:not([aria-invalid="true"]),
+[data-popover-open="true"] > div:not([aria-invalid="true"]),
+button[data-state="open"]:not([aria-invalid="true"]) {
+  border-color: var(--input-border-active) !important;
+  outline: 2px solid var(--input-outline-active) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 1px var(--input-border-active) !important;
+}
+/* Ensure error state takes precedence over open state */
+[data-popover-open="true"] input[aria-invalid="true"],
+[data-popover-open="true"] > div[aria-invalid="true"],
+button[data-state="open"][aria-invalid="true"] {
+  border-color: var(--destructive-foreground) !important;
+  outline: 2px solid var(--destructive-foreground) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 1px var(--destructive-foreground) !important;
+}
+

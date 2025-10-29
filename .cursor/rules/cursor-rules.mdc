@@ -1,0 +1,93 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Giv Design System Development Rules
+
+## Project Context
+Building a B2B SaaS design system for IDD agencies. The system supports Angular (current web), Ionic (current mobile), and React (future migration). Reference guidelines.md for detailed design specifications.
+
+## Core Development Principles
+
+### Component Structure
+- Place all new components in `/ui` directory
+- Use Radix UI primitives when available
+- Apply class-variance-authority (cva) for variant management
+- Export component types alongside components
+
+### Styling Approach
+- Use design system CSS variables from global.css exclusively
+- Apply Tailwind classes that reference these variables (e.g., `bg-primary`, `text-body`)
+- Never hardcode colors - always use semantic tokens
+- Follow size standards: buttons/inputs default to 40px height (h-10)
+
+### Typography
+- Use predefined typography classes (h5-heading, paragraph-small-regular, etc.)
+- H5 for page titles, H6 for sections, H7 for subsections
+- Body text: paragraph-small-regular (14px)
+
+### Component Patterns
+```tsx
+// Standard component structure
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "./utils";
+
+const componentVariants = cva(
+  "base-classes",
+  {
+    variants: {
+      size: { sm: "...", md: "..." },
+      variant: { primary: "...", secondary: "..." }
+    },
+    defaultVariants: { size: "md" }
+  }
+);
+
+interface ComponentProps 
+  extends React.ComponentProps<typeof Primitive>,
+    VariantProps<typeof componentVariants> {}
+```
+
+### Multi-Framework Support
+- Document examples for React, Angular, and Ionic in documentation files
+- React: Use hooks and functional components
+- Angular: Provide directive/class-based examples
+- Ionic: Include ion-component wrappers
+
+### Accessibility Requirements
+- Include proper ARIA labels and roles
+- Maintain keyboard navigation support
+- Ensure WCAG AA compliance (4.5:1 contrast)
+- Add tooltips for icon-only buttons
+
+### State Management
+- Use controlled/uncontrolled patterns appropriately
+- Handle loading, disabled, and error states
+- Implement proper focus management
+
+### Documentation Format
+Each component needs:
+1. Preview component in `/previews` showing all variants
+2. Documentation object with examples for all frameworks
+3. Guidelines including properties, attributes, and accessibility
+
+### Figma Integration
+- Reference Figma designs via MCP when available
+- Match exact spacing and sizing from designs
+- Use figma:asset references for images
+
+## Common Pitfalls to Avoid
+- Don't use localStorage/sessionStorage (not supported in environment)
+- Don't skip heading levels in content hierarchy
+- Don't hardcode sizes - use design system tokens
+- Don't forget loading states and error handling
+
+## Testing Checklist
+- [ ] Component works in all three frameworks
+- [ ] Follows size and spacing guidelines
+- [ ] Uses semantic color tokens
+- [ ] Keyboard accessible
+- [ ] Has proper TypeScript types
+- [ ] Includes all necessary variants
